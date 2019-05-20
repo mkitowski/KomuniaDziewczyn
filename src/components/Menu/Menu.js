@@ -8,7 +8,7 @@ const Menu = (props) => {
                 <h2>Magdalena i Karolina Kitowskie</h2>
                 <h3>11.05.2019</h3>
                 <ul>
-                    <li onClick={props.handler}>Film</li>
+                    <li onClick={props.handler}><a>Film</a></li>
                     <li>Zdjęcia</li>
                 </ul>
             </div>

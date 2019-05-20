@@ -114,7 +114,7 @@ class App extends React.Component {
         HiroVisible: false,
         toTopButtonVisible: true
       })
-    }, 1600);
+    }, 2600);
   }
 
   onClickToTop = () => {

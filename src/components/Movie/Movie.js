@@ -11,7 +11,7 @@ const StyledDiv = styled.div`
       background-color: rgba(0, 0, 0, 1);
     }
   }
-  animation: 1.5s ease-in-out 1 opacityBkg forwards;
+  animation: 2.5s ease-in-out 1 opacityBkg forwards;
   width: 100%;
   height: 100vh;
   z-index: 2;
