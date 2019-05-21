@@ -9,10 +9,18 @@ const StyledDiv = styled.div`
   background-color: black;
 
   .gallery {
+    @keyframes opacityBkg {
+      0% {
+        background-color: rgba(0, 0, 0, 0.3);
+      }
+      100% {
+        background-color: rgba(0, 0, 0, 1);
+      }
+    }
+    animation: 2.5s ease-in-out 1 opacityBkg forwards;
     width: 100%;
     position: absolute;
     margin: 0 auto;
-    background-color: black;
     justify-content: center;
   }
   .photoContainer {
@@ -32,24 +40,27 @@ const StyledDiv = styled.div`
   }
 `;
 
-function GalleryPage({ filesNames }) {
+class GalleryPage extends React.Component {
 
-  const files = filesNames || [];
-  return (
-    <StyledDiv>
-      <Grid container spacing={24} className={"gallery"}>
-        {
-          files.map((el, i) => {
-            return (
-              <Grid key={i} item xs={3} className={'photoContainer'}>
-                <img src={el} alt={i} />
-              </Grid>
-            )
-          })
-        }
-      </Grid>
-    </StyledDiv>
-  );
+  render(){
+    const files = this.props.filesNames || [];
+    return (
+      <StyledDiv>
+        <Grid container spacing={24} className={"gallery"}>
+          {
+            files.map((el, i) => {
+              return (
+                <Grid key={i} item xs={3} className={'photoContainer'}>
+                  <img src={el} alt={i} />
+                </Grid>
+              )
+            })
+          }
+        </Grid>
+      </StyledDiv>
+    );
+  }
+
 }
 
 
