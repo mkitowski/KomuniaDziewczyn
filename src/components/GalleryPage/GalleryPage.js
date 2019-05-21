@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Grid from '@material-ui/core/Grid';
-
+import Picture from '../Picture/Picture';
 
 
 const StyledDiv = styled.div`
@@ -29,6 +29,7 @@ const StyledDiv = styled.div`
     overflow: hidden;
     margin: 12px;
     padding: 0 !important;
+    border-radius: 3px;
     img {
       width: 100%
       transition: all .4s ease-in-out;
@@ -57,6 +58,7 @@ class GalleryPage extends React.Component {
             })
           }
         </Grid>
+        {false && <Picture file={files[22]}/>}
       </StyledDiv>
     );
   }
