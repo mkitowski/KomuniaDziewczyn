@@ -8,8 +8,8 @@ const Menu = (props) => {
                 <h2>Magdalena i Karolina Kitowskie</h2>
                 <h3>11.05.2019</h3>
                 <ul>
-                    <li onClick={props.handler}>Film</li>
-                    <li>Zdjęcia</li>
+                    <li><button onClick={props.handler}>Film</button></li>
+                    <li><button>Zdjęcia</button></li>
                 </ul>
             </div>
         </div>

@@ -50,11 +50,14 @@ const StyledDiv = styled.div`
       justify-content: space-between;
       li {
         list-style: none;
-        padding: 1rem 2rem;
+        button{
+padding: 1rem 2rem;
         border: 2px solid white;
         border-radius: 6px;
         cursor: pointer;
         transition: transform 0.3s ease-in-out, color .3s ease-in-out, background-color .3s ease-in-out, border .3s ease-in-out;
+        background-color: rgba(0,0,0,0.0);
+        color: white;
         :hover {
           transform: translate(4px,-4px);
           color: yellowgreen;
@@ -67,6 +70,8 @@ const StyledDiv = styled.div`
           border: 2px solid yellowgreen;
           background-color: rgba(0,0,0,0.9)
         }
+        }
+
       }
     }
   }
@@ -88,8 +93,8 @@ class App extends React.Component {
   componentDidMount() {
     firebase.initializeApp(firebaseConfig);
     const storage = firebase.storage();
-    const filesNames =[];
-    for(let i=1; i<=116; i++){
+    const filesNames = [];
+    for (let i = 1; i <= 116; i++) {
       const a = require(`./lib/pics/${i}.jpg`);
       filesNames.push(a);
     }

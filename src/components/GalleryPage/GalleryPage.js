@@ -30,6 +30,7 @@ const StyledDiv = styled.div`
     margin: 12px;
     padding: 0 !important;
     border-radius: 3px;
+    min-width: 300px;
     img {
       width: 100%
       transition: all .4s ease-in-out;
