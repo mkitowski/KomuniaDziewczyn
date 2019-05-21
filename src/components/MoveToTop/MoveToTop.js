@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 
-const StyledArrow = styled.div`
+const StyledArrow = styled.button`
     position: fixed;
     right: 5%;
     bottom: 5%;

@@ -51,14 +51,15 @@ const StyledDiv = styled.div`
       li {
         list-style: none;
         button{
-padding: 1rem 2rem;
+        padding: 1rem 2rem;
         border: 2px solid white;
         border-radius: 6px;
         cursor: pointer;
         transition: transform 0.3s ease-in-out, color .3s ease-in-out, background-color .3s ease-in-out, border .3s ease-in-out;
         background-color: rgba(0,0,0,0.0);
         color: white;
-        :hover {
+        @media (min-width: 600px){
+          :hover {
           transform: translate(4px,-4px);
           color: yellowgreen;
           border: 2px solid yellowgreen;
@@ -70,6 +71,8 @@ padding: 1rem 2rem;
           border: 2px solid yellowgreen;
           background-color: rgba(0,0,0,0.9)
         }
+        }
+        
         }
 
       }
@@ -87,7 +90,7 @@ class App extends React.Component {
     MovieVisible: false,
     HiroVisible: true,
     toTopButtonVisible: false,
-    filesLoaded: false
+    GalleryVisible: false
   }
 
   componentDidMount() {
@@ -110,6 +113,7 @@ class App extends React.Component {
       if (window.pageYOffset <= 1) {
         this.setState({
           MovieVisible: false,
+          GalleryVisible: false,
           toTopButtonVisible: false
         })
       }
@@ -123,7 +127,28 @@ class App extends React.Component {
 
   onMovieClicked = () => {
     this.setState({
-      MovieVisible: true
+      MovieVisible: true,
+      GalleryVisible: false
+    });
+    setTimeout(() => {
+      window.scrollTo({
+        behavior: "smooth",
+        top: window.innerHeight,
+        left: 0
+      });
+    }, 100);
+    setTimeout(() => {
+      this.setState({
+        HiroVisible: false,
+        toTopButtonVisible: true
+      })
+    }, 2600);
+  }
+
+  onGalleryClick = () => {
+    this.setState({
+      MovieVisible: false,
+      GalleryVisible: true
     });
     setTimeout(() => {
       window.scrollTo({
@@ -154,10 +179,10 @@ class App extends React.Component {
       <div>
         <StyledDiv>
           {this.state.HiroVisible && <Hiro />}
-          <Menu handler={this.onMovieClicked} />
+          <Menu movie={this.onMovieClicked} gallery={this.onGalleryClick} />
         </StyledDiv>
         {this.state.MovieVisible && <Movie />}
-        {this.state.filesLoaded && <GalleryPage filesNames={this.state.filesNames} />}
+        {this.state.GalleryVisible && <GalleryPage filesNames={this.state.filesNames} />}
         {this.state.toTopButtonVisible && <MoveToTop handler={this.onClickToTop} />}
       </div>
 

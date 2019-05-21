@@ -1,4 +1,5 @@
 import React from 'react';
+import tapOrClick from 'react-tap-or-click';
 
 const Menu = (props) => {
     return (
@@ -8,8 +9,8 @@ const Menu = (props) => {
                 <h2>Magdalena i Karolina Kitowskie</h2>
                 <h3>11.05.2019</h3>
                 <ul>
-                    <li><button onClick={props.handler}>Film</button></li>
-                    <li><button>Zdjęcia</button></li>
+                    <li><button { ...tapOrClick(props.movie) }>Film</button></li>
+                    <li><button { ...tapOrClick(props.gallery) }>Zdjęcia</button></li>
                 </ul>
             </div>
         </div>
