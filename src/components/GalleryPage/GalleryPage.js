@@ -1,60 +1,56 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import GridList from '@material-ui/core/GridList';
-import GridListTile from '@material-ui/core/GridListTile';
+import styled from 'styled-components';
+import Grid from '@material-ui/core/Grid';
 
 
-const styles = theme => ({
-    root: {
-        display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'space-around',
-        overflow: 'hidden',
-        backgroundColor: theme.palette.background.paper,
-    },
-    gridList: {
-        width: 500,
-        height: 450,
-    },
-});
 
-/**
- * The example data is structured as follows:
- *
- * import image from 'path/to/image.jpg';
- * [etc...]
- *
- * const tileData = [
- *   {
- *     img: image,
- *     title: 'Image',
- *     author: 'author',
- *     cols: 2,
- *   },
- *   {
- *     [etc...]
- *   },
- * ];
- */
-function ImageGridList(props) {
-    const { classes } = props;
+const StyledDiv = styled.div`
+  width: 100%;
+  background-color: black;
 
-    return (
-        <div className={classes.root}>
-            <GridList cellHeight={160} className={classes.gridList} cols={3}>
-                {/* {tileData.map(tile => (
-                    <GridListTile key={tile.img} cols={tile.cols || 1}>
-                        <img src={tile.img} alt={tile.title} />
-                    </GridListTile>
-                ))} */}
-            </GridList>
-        </div>
-    );
+  .gallery {
+    width: 100%;
+    position: absolute;
+    margin: 0 auto;
+    background-color: black;
+    justify-content: center;
+  }
+  .photoContainer {
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    margin: 12px;
+    padding: 0 !important;
+    img {
+      width: 100%
+      transition: all .4s ease-in-out;
+      vertical-align: middle;
+      :hover {
+        transform: scale(1.2);
+      }
+    }
+  }
+`;
+
+function GalleryPage({ filesNames }) {
+
+  const files = filesNames || [];
+  return (
+    <StyledDiv>
+      <Grid container spacing={24} className={"gallery"}>
+        {
+          files.map((el, i) => {
+            return (
+              <Grid key={i} item xs={3} className={'photoContainer'}>
+                <img src={el} alt={i} />
+              </Grid>
+            )
+          })
+        }
+      </Grid>
+    </StyledDiv>
+  );
 }
 
-ImageGridList.propTypes = {
-    classes: PropTypes.object.isRequired,
-};
 
-export default withStyles(styles)(ImageGridList);
+export default GalleryPage;
