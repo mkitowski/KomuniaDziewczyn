@@ -10,6 +10,10 @@ import GalleryPage from './components/GalleryPage/GalleryPage';
 import Movie from './components/Movie/Movie';
 import MoveToTop from './components/MoveToTop/MoveToTop';
 
+
+
+
+
 const StyledDiv = styled.div`
 
   width: 100%;
@@ -84,22 +88,16 @@ class App extends React.Component {
   componentDidMount() {
     firebase.initializeApp(firebaseConfig);
     const storage = firebase.storage();
-    this.setState({
-      storage,
-    });
-
-    const filesNames = [];
-    for (let i = 1; i <= 116; i++) {
-      storage.ref().child(`${i}.jpg`).getDownloadURL()
-      .then(e => {
-        filesNames.push(e);
-        this.setState({
-          filesNames,
-          filesLoaded: true
-        });
-      });
-
+    const filesNames =[];
+    for(let i=1; i<=116; i++){
+      const a = require(`./lib/pics/${i}.jpg`);
+      filesNames.push(a);
     }
+    this.setState({
+      filesNames,
+      storage,
+      filesLoaded: true
+    })
   }
 
   listenPosition() {
